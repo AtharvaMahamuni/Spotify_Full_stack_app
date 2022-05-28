@@ -1,0 +1,18 @@
+{
+  "name": "spotify_backend",
+  "version": "1.0.0",
+  "description": "This is the application for deltaX assignment.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "backend",
+    "REST",
+    "APIs",
+    "ExpressJS",
+    "Spotify"
+  ],
+  "author": "Atharva Mahamuni",
+  "license": "ISC"
+}
