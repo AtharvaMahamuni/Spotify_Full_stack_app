@@ -4,4 +4,10 @@ const User = function(user) {
     this.password = user.password;
 }
 
+// TODO: Get all users
+
+// TODO: Get user by id
+
+// TODO: Create new user
+
 module.exports = User;
