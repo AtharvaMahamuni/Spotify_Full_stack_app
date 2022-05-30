@@ -3,8 +3,8 @@
 -- Use this file first to create the database and tables for the first time.
 
 -- TODO: Create database
-CREATE DATABASE demo;
-USE demo;
+CREATE DATABASE spotify;
+USE spotify;
 SELECT DATABASE();
 
 -- TODO: Create artist table
@@ -60,3 +60,5 @@ CREATE TABLE rating (
 );
 DESC rating;
 
+-- TODO: Add dummy data
+SOURCE sql/dummydata.sql;
