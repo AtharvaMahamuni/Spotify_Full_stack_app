@@ -27,5 +27,14 @@ exports.addNewArtist = (req, res) => {
             res.send(err)
         console.log('Artist added : ', artist);
         res.send(artist);
-    })
-}
+    });
+};
+
+exports.getTopTenArtists = (req, res) => {
+    Artist.findTopTenArtist((err, artists) => {
+        if(err)
+            res.send(err);
+        console.log('Top 10 artists are: ', artists);
+        res.send(artists);
+    });
+};

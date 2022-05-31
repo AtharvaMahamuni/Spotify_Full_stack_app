@@ -43,7 +43,25 @@ Song.addSong = (songReqData, result) => {
             console.log('New song added successfully');
             result(null, res)
         }
-    })
-}
+    });
+};
+
+// TODO: Top 10 songs with highest avg ratings
+Song.findTopTenSongs = (result) => {
+    const sqlQuery = 'SELECT song.song_name, AVG(rating.rating) AS avg_rating FROM song \
+    INNER JOIN rating ON song.song_id = rating.song_id \
+    GROUP BY song.song_id \
+    ORDER BY avg_rating DESC \
+    LIMIT 10'
+    dbCon.query(sqlQuery, (err, res) => {
+        if (err) {
+            console.log("Error occured while finding top 10 songs", err);
+            result(null, err);
+        } else {
+            console.log('Listing top 10 songs successful');
+            result(null, res)
+        }
+    });
+};
 
 module.exports = Song;

@@ -5,4 +5,6 @@ const Rating = function(rating) {
     this.rating = rating.rating;
 }
 
+// TODO: Get all ratings
+
 module.exports = Rating;

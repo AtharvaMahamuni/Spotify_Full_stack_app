@@ -16,8 +16,8 @@ exports.getSongById = (req, res) => {
             res.send(err);
         console.log('Song is : ', song);
         res.send(song);
-    })
-}
+    });
+};
 
 exports.addNewSong = (req, res) => {
     const songData = req.body;
@@ -27,5 +27,14 @@ exports.addNewSong = (req, res) => {
             res.send(err);
         console.log('Song inserted: ', song);
         res.send(song);
-    })
-}
+    });
+};
+
+exports.getTopTenSongs = (req, res) => {
+    Song.findTopTenSongs((err, songs) => {
+        if (err) 
+            res.send(err);
+        console.log('Top 10 songs are : ', songs);
+        res.send(songs);
+    });
+};

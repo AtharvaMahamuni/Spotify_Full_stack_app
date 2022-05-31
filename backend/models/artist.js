@@ -43,7 +43,26 @@ Artist.addArtist = (artistReqData, result) => {
             console.log('New artist added successfully');
             result(null, res);
         }
-    })
-}
+    });
+};
+
+// TODO: Get top 10 artists by Avg rating
+Artist.findTopTenArtist = (result) => {
+    dbCon.query('SELECT artist.artist_name, AVG(rating.rating) AS avg_rating FROM artist \
+    INNER JOIN artist_song ON artist.artist_id = artist_song.artist_id \
+    INNER JOIN song ON artist_song.song_id = song.song_id \
+    INNER JOIN rating ON song.song_id = rating.song_id \
+    GROUP BY artist.artist_id \
+    ORDER BY avg_rating DESC \
+    LIMIT 10', (err, res) => {
+        if (err) {
+            console.log('Error to find top 10 artists', err);
+            res.send(null, err);
+        } else {
+            console.log('Search of top 10 artists successful');
+            result(null, res);
+        }
+    });
+};
 
 module.exports = Artist
