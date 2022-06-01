@@ -2,6 +2,8 @@ require('dotenv').config();
 const con = require('./configs/mysql_db_con');
 const express = require('express');
 const app = express();
+const cors = require('cors')
+app.use(cors())
 app.use(express.json());
 
 
