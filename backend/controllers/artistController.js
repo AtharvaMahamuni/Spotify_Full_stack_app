@@ -38,3 +38,14 @@ exports.getTopTenArtists = (req, res) => {
         res.send(artists);
     });
 };
+
+exports.getArtistsBySongId = (req, res) => {
+    const songId = req.params.song_id;
+    console.log(songId);
+    Artist.findArtistsBySongId(songId, (err, artists) => {
+        if (err) 
+            res.send(err);
+        console.log('Artists by song id are: ', artists);
+        res.send(artists);
+    })
+};

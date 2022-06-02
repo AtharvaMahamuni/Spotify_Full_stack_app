@@ -1,5 +1,5 @@
 import React from 'react';
-import TopTen from './components/useEffect/TopTen'
+import TopTen from './components/useEffect/GetApiCalls'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 

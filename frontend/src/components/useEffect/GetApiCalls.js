@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import SongCard from "../SongCard";
 import ArtistCard from "../ArtistCard";
 // import backend from '../../backend';
+import PopUpArtist from "./PopUpArtist";
 
 const TopTen = () => {
 
@@ -26,6 +27,7 @@ const TopTen = () => {
 
     return(
         <div>
+            <PopUpArtist />
             <div className="container-fluid">
                 <h1 className="mt-5">Top 10 Songs</h1>
                 <p className="subtitle">

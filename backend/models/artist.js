@@ -48,7 +48,7 @@ Artist.addArtist = (artistReqData, result) => {
 
 // TODO: Get top 10 artists by Avg rating
 Artist.findTopTenArtist = (result) => {
-    dbCon.query('SELECT artist.artist_name, AVG(rating.rating) AS avg_rating FROM artist \
+    dbCon.query('SELECT artist.artist_id, artist.artist_name, AVG(rating.rating) AS avg_rating FROM artist \
     INNER JOIN artist_song ON artist.artist_id = artist_song.artist_id \
     INNER JOIN song ON artist_song.song_id = song.song_id \
     INNER JOIN rating ON song.song_id = rating.song_id \
@@ -64,5 +64,22 @@ Artist.findTopTenArtist = (result) => {
         }
     });
 };
+
+// TODO: Get Artists by song id
+Artist.findArtistsBySongId = (song_id, result) => {
+    dbCon.query('SELECT artist.artist_id, artist.artist_name AS artist_name FROM artist \
+    INNER JOIN artist_song ON artist.artist_id = artist_song.artist_id \
+    INNER JOIN song ON artist_song.song_id = song.song_id \
+    WHERE song.song_id = ?', song_id, (err, res) => {
+        if(err) {
+            console.log('Error in finding artists by song id');
+            res.send(null, err);
+        } else {
+            console.log('Finding artists by song id is successful');
+            result(null, res);
+        }
+    })
+}
+
 
 module.exports = Artist

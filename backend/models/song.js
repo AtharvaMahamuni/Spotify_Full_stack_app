@@ -48,7 +48,7 @@ Song.addSong = (songReqData, result) => {
 
 // TODO: Top 10 songs with highest avg ratings
 Song.findTopTenSongs = (result) => {
-    const sqlQuery = 'SELECT song.song_name, AVG(rating.rating) AS avg_rating FROM song \
+    const sqlQuery = 'SELECT song.song_id, song.song_name, AVG(rating.rating) AS avg_rating FROM song \
     INNER JOIN rating ON song.song_id = rating.song_id \
     GROUP BY song.song_id \
     ORDER BY avg_rating DESC \
@@ -63,5 +63,22 @@ Song.findTopTenSongs = (result) => {
         }
     });
 };
+
+// TODO: get songs by artist id
+Song.fingSongsByArtistId = (song_id, result) => {
+    const sqlQuery = 'SELECT song.song_name AS song_name FROM song \
+    INNER JOIN artist_song ON song.song_id = artist_song.song_id \
+    INNER JOIN artist ON artist_song.artist_id = artist.artist_id \
+    WHERE artist.artist_id = ?';
+    dbCon.query(sqlQuery, song_id, (err, res) => {
+        if (err) {
+            console.log('Error in finding the songs by artist id');
+            res.send(null, err);
+        } else {
+            console.log('Success in finding songs by artist id');
+            result(null, res);
+        }
+    })
+}
 
 module.exports = Song;
