@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from "react";
 import SongCard from "../SongCard";
 import ArtistCard from "../ArtistCard";
+// import AddSongBtn from "../AddSongBtn";
 // import backend from '../../backend';
-import PopUpArtist from "./PopUpArtist";
+// import PopUpArtist from "./PopUpArtist";
+import {Link} from 'react-router-dom';
 
 const TopTen = () => {
 
@@ -26,13 +28,15 @@ const TopTen = () => {
     }, []);
 
     return(
-        <div>
-            <PopUpArtist />
+        <div style={{zIndex:'-1'}}>
+            {/* <PopUpArtist /> */}
+            
             <div className="container-fluid">
                 <h1 className="mt-5">Top 10 Songs</h1>
                 <p className="subtitle">
                     Choosen by users rating
                 </p>
+                <Link to={'/addsong'}>Add Song</Link>
                 <div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">             
                 
                 {/* <div className="container-fluid mt-5"> */}
