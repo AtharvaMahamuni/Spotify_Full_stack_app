@@ -36,7 +36,7 @@ const TopTen = () => {
                 <p className="subtitle">
                     Choosen by users rating
                 </p>
-                <Link to={'/addsong'}>Add Song</Link>
+                <Link to={'/addsong'} className='btn-primary p-2 pl-2 pr-2' style={{textDecoration:'none'}}>Add Song</Link>
                 <div className="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2">             
                 
                 {/* <div className="container-fluid mt-5"> */}
